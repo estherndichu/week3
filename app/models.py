@@ -8,7 +8,7 @@ class Pitches(db.Model):
     pitch_title = db.Column(db.String(255))
     pitch = db.Column(db.String)
     time =  db.Column(db.DateTime, default = datetime.utcnow)
-    user_id = db.Column(db.INteger,db.ForeignKey('users.id'))    
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))    
     comments = db.relationship('Comments', backref='title',lazy = 'dynamic')
 
 class User(db.Model):
@@ -23,5 +23,5 @@ class User(db.Model):
     def __repr__(self):
         return f'User {self.username}'    
 
-class Comments(db.Model):
+#class Comments(db.Model):
     

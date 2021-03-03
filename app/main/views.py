@@ -6,6 +6,16 @@ from .. import db
 from . import main
 from .forms import PitchForm,CommentForm,UpdateProfile
 
+@main.route('/')
+def index():
+    '''
+    Index page
+    return
+    '''
+    message= "Welcome to Pitch Application"
+    title= 'PITCH APP'
+    return render_template('index.html', message=message,title=title)
+
 @main.route('/pitch/', methods = ['GET','POST'])
 @login_required
 def new_pitch():
@@ -17,7 +27,6 @@ def new_pitch():
         pitch= form.pitch.data
         title=form.title.data
 
-        # Updated pitchinstance
         new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
 
         title='New Pitch'

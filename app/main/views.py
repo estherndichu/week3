@@ -115,3 +115,4 @@ def comment(id):
     print(comm)
     title = 'comments'
     return render_template('comments.html',comment = comm,title = title)
+    

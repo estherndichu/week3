@@ -36,3 +36,12 @@ def new_pitch():
         return redirect(url_for('main.index'))
 
     return render_template('pitch.html',form= form)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(author = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)    

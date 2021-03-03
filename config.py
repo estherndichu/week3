@@ -4,8 +4,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URL = 'postgresql+psycopg2://moringa:Access@localhost/pitches'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")    
 
     # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
@@ -16,7 +15,7 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
-    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitches'
 
 config_options = {
 'development':DevConfig,

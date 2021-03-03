@@ -2,7 +2,8 @@ from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
 from ..models import User,Pitches,Comments
 from . import main
-from .. import db,photos
+from .. import db
+# ,photos
 from . import main
 from .forms import PitchForm,CommentForm,UpdateProfile
 

@@ -1,72 +1,84 @@
 {% extends 'base.html'%}
 {% block styles%} {{ super() }}
 
-<link rel="stylesheet" href="../static/css/index.css"> 
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
-  
+<link rel="stylesheet" href="../static/css/index.css">
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron" style="margin-top:0; background-color: grey;">
-  <h2 class="text-center" >PITCH WITH US;</h2>
-  <p class="text-center"> Have 60 seconds to impress someone and make something great.!!!</p>
-</div> 
+<div class="container">
+    <h2 class="text-center">ONE MINUTE PITCH</h2>
+    <p class="text-center">In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do
+        we make sure that you use your 1 minute to actually say something meaningful? </p>
+    <p>Do you have anything to share with us? Sign Up to make your contribution.</p>
+</div>
 
-<body >
+<body>
 
-    <div class="container">  
-      <div class="col-sm" >
-        <div class=" card col-sm mt-2">
-          <div class="well well-lg p-3" id="card" style="text-align: center;">
-              <h3>Product Pitch</h3>
-              <hr>
-              <p>Any product that needs a manual to work is broken.</p> </p>
-              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter a New Pitch</a></button><br><br>
-              <button type="button" class="btn btn-outline-primary"><a href="/categories/Product">Read More</a></button>
-          </div>
-      </div>
-      </div>
-      <div class="col-sm">
-        <div class=" card col-sm mt-2">
-          <div class="well well-lg p-3" id="card" style="text-align: center;">
-              <h3>Adverting Pitch</h3>
-              <hr>
-              <p>“The difference between the almost right word and the right word is the difference between the lightning bug and the lightning.” </p> </p>
-              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter a New Pitch</a></button><br><br>
-              <button type="button" class="btn btn-outline-primary"><a href="/categories/Adverts">Read More</a></button>
-          </div>
-      </div>
-      </div>
-
-      <div class="col-sm">
-        <div class=" card col-sm mt-2">
-          <div class="well well-lg p-3" id="card" style="text-align: center;">
-              <h3>Iterview Pitches</h3>
-              <hr>
-              <p>“It’s not whether you get knocked down. It’s whether you get up.”</p> </p>
-              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter a New Pitch</a></button><br><br>
-              <button type="button" class="btn btn-outline-primary"><a href="/categories/Iterview">Read More</a></button>
-          </div>
-      </div>
-      </div>
-
-
-    </div>
-  
-       
-  </body>
-    <br><br>
-    
-  <footer class="page-footer font-small pt-4 mt-3 ">
     <div class="container">
-    <ul class="list-unstyled list-inline text-center py-2">
-        <li class="list-inline-item">
-        <h5 class="mb-1">One Minute Pitch</h5>
-        </li>
-    </ul>
+        <div class="col-sm">
+            <div class=" card col-sm mt-2" style="text-align: center;">
+                <div class="well well-lg p-3">
+                    <h3>PickUp line Pitch</h3>
+                    <hr>
+                    <p>Roses are red,violets are Blue. Can I have your number so I can call you?</p>
+                    </p>
+                    <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter PickUp line
+                            Pitch</a></button><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class=" card col-sm mt-2">
+                <div class="well well-lg p-3" style="text-align: center;">
+                    <h2>Interview Pitch</h2>
+                    <hr>
+                    <h4>Tell Me About Yourself.</h4>
+                    <p>
+                        You'll probably be asked this at the outset. It's kind of meant as an ice-breaker, even if the
+                        thought of it makes you shudder. Don't be afraid to be personal. Talk about your hobbies and
+                        motivations, and feel free to showcase your personality. But don't go on too long. And try to
+                        relate what you say to the job.
+
+                    </p>
+                    </p>
+                    <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter an Interview
+                            Pitch</a></button><br><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class=" card col-sm mt-2" style="text-align: center;">
+                <h3>Promotion Pitches</h3>
+                <hr>
+                <div class="well well-lg p-3" style="text-align: center;">
+                    <h4>
+                        Product/Service Announcement
+                    </h4>
+                    <p>
+                        If you’ve recently launched a new product or service, it’s certainly a newsworthy event to your
+                        customers. Capitalize on that momentum and text your audience before, during, and after the big
+                        release.</p>
+                    <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Enter a Promotion
+                            Pitch</a></button><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<br><br>
+
+<footer class="page-footer font-small pt-4 mt-3 ">
+    <div class="container">
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">ONE MINUTE PITCH</h5>
+            </li>
+        </ul>
     </div>
     <div class="footer-copyright text-center py-3">
-    © 2021 Copyright:
+        2021 Copyright:
     </div>
 </footer>
-    {% endblock%}
+{% endblock%}

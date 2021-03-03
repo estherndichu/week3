@@ -92,3 +92,14 @@ def new_comment(pitches_id):
         return redirect(url_for('main.index'))
     title='New comment'
     return render_template('new_comment.html',title=title,comment_form = form,pitches_id=pitches_id)
+
+@main.route('/comments/<id>')
+@login_required
+def comment(id):
+    '''
+    function to return the comments
+    '''
+    comm =Comments.get_comment(id)
+    print(comm)
+    title = 'comments'
+    return render_template('comments.html',comment = comm,title = title)

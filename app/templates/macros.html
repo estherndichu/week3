@@ -9,7 +9,6 @@
               <h5 class="card-title">{{pitch.pitch_title}}</h5>
               <p class="card-text">{{pitch.pitch}}</p>
               <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="card-link">Add Comment</a>
-              <a href="#" class="card-link">View Comments</a>
             </div>
           </div>
         {% endfor %}

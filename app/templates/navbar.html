@@ -1,26 +1,21 @@
-{% block styles%}
 
-<link rel="stylesheet" href="../static/css/index.css">
-{% endblock %}
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="./index">Pitch.com</a>
-      
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-          </li>
-          <br>
-          <li class="nav-item">
-            <a class="nav-link" href="">Categories</a>
-          </li>
-          <br>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('auth.login')}}">Sign In</a>
-          </li>
-          <br>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{url_for('main.index')}}">PITCH.COM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{url_for('main.index')}}">HOME<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('main.new_pitch')}}">NEW PITCH</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">SIGN IN</a>
+        </li>
+      </ul>
     </div>
   </nav>

@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% macro displayPitches(pitches) %}
+<div class="container-fluid">
+    <div class="row">
+        {% if pitches %}
+        {% for pitch in pitches %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{pitch.pitch_title}}</h5>
+              <p class="card-text">{{pitch.pitch}}</p>
+              <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="card-link">Add Comment</a>
+              <a href="#" class="card-link">View Comments</a>
+            </div>
+          </div>
+        {% endfor %}
+        {% else %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title">Category Has 0 posts</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

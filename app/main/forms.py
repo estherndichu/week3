@@ -5,12 +5,12 @@ from ..models import User
 
 class PitchForm(FlaskForm):
     pitch_title = StringField('Pitch Title')
-    # category = (u'Pitch Categories', choices = [('Pickup','Pickup'),('Interview','Interview'),('Promotion','Promotion')])
+    category = SelectField (u'Pitch Categories', choices = [('Pickup','Pickup'),('Interview','Interview'),('Promotion','Promotion')])
     pitch = TextAreaField('Pitch')
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Comment')
+    comment = TextAreaField('Comment Below')
     submit = SubmitField('Comment')
 
 class UpdateProfile(FlaskForm):

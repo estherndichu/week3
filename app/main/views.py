@@ -2,10 +2,9 @@ from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
 from ..models import User,Pitches,Comments
 from . import main
-from .. import db
-# ,photos
+from .. import db,photos
 from . import main
-from .forms import PitchForm,CommentForm,UpdateProfile
+from .forms import PitchForm,UpdateProfile,CommentForm
 
 @main.route('/')
 def index():
@@ -13,9 +12,10 @@ def index():
     Index page
     return
     '''
-    message= "Welcome to Pitch Application"
-    title= 'PITCH APP'
-    return render_template('index.html', message=message,title=title)
+    interview = Pitches.query.filter_by(category = 'Interview').all() 
+    promotion = Pitches.query.filter_by(category = 'Promotion').all()
+    pickup = Pitches.query.filter_by(category = 'Pickup').all()
+    return render_template('index.html', promotion = promotion,interview = interview, pickup=pickup)
 
 @main.route('/pitch/', methods = ['GET','POST'])
 @login_required
@@ -24,11 +24,12 @@ def new_pitch():
     form = PitchForm()
 
     if form.validate_on_submit():
+        pitch_title=form.pitch_title.data
         category = form.category.data
         pitch= form.pitch.data
-        title=form.title.data
+        user_id=current_user
 
-        new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
+        new_pitch = Pitches(pitch_title=pitch_title,category= category,pitch= pitch,user_id=current_user.id)
 
         title='New Pitch'
 
@@ -38,14 +39,14 @@ def new_pitch():
 
     return render_template('pitch.html',form= form)
 
-@main.route('/categories/<cate>')
+@main.route('/categories/<category>')
 @login_required
-def category(cate):
+def category(category):
     '''
     function to return the pitches by category
     '''
-    category = Pitches.get_pitches(cate)
-    title = f'{cate}'
+    category = Pitches.get_pitches(category)
+    title = f'{category}'
     return render_template('categories.html',title = title, category = category)    
 
 @main.route('/user/<uname>')
@@ -89,31 +90,23 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))    
 
 
-@main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
+@main.route('/new_comment/<int:pitch_id>', methods = ['GET', 'POST'])
 @login_required
-def new_comment(pitches_id):
-    pitches = Pitches.query.filter_by(id = pitches_id).first()
+def new_comment(pitch_id):
+    pitches = Pitches.query.filter_by(id = pitch_id).first()
     form = CommentForm()
 
     if form.validate_on_submit():
         comment = form.comment.data
+        pitch_id=pitch_id
+        user_id=current_user._get_current_object().id
 
-        new_comment = Comments(comment=comment,user_id=current_user.id, pitches_id=pitches_id)
+        new_comment = Comments(comment=comment,user_id=current_user.id, pitch_id=pitch_id)
 
         new_comment.save_comment()
 
         return redirect(url_for('main.index'))
     title='New comment'
-    return render_template('new_comment.html',title=title,comment_form = form,pitches_id=pitches_id)
+    return render_template('new_comment.html',title=title,comment_form = form,pitch_id=pitch_id)
 
-@main.route('/comments/<id>')
-@login_required
-def comment(id):
-    '''
-    function to return the comments
-    '''
-    comm =Comments.get_comment(id)
-    print(comm)
-    title = 'comments'
-    return render_template('comments.html',comment = comm,title = title)
     
